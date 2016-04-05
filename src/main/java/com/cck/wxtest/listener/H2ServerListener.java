@@ -7,16 +7,22 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class H2ServerListener implements ServletContextListener {
 
+	private H2Server h2Server = new H2Server();
+
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("h2server destory");
+		h2Server.stopServer();
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("init...");
+		Thread thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				h2Server.startServer();
+			}
+		});
+		thread.start();
 	}
 
 }
