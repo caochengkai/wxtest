@@ -1,25 +1,22 @@
 package com.cck.wxtest.utils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.StringWriter;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@SuppressWarnings("rawtypes")
 public class HttpClient {
 	private static CloseableHttpClient httpclient = HttpClients.createDefault();
 
@@ -30,14 +27,12 @@ public class HttpClient {
 		return new ObjectMapper().readValue(EntityUtils.toString(entity), Map.class);
 	}
 
-	public static Map post(String url, Map<String, String> params) throws IOException {
+	public static Map post(String url, Map jsonMap) throws IOException {
 		HttpPost httppost = new HttpPost(url);
-		if (MapUtils.isNotEmpty(params)) {
-			List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-			for (Entry<String, String> entry : params.entrySet()) {
-				nvps.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-			}
-			httppost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
+		if (MapUtils.isNotEmpty(jsonMap)) {
+			StringWriter out = new StringWriter();
+			new ObjectMapper().writeValue(out, jsonMap);
+			httppost.setEntity(new StringEntity(out.toString(), "UTF-8"));
 		}
 		CloseableHttpResponse response = httpclient.execute(httppost);
 		return new ObjectMapper().readValue(EntityUtils.toString(response.getEntity()), Map.class);
