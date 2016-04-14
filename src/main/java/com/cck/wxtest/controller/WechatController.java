@@ -3,17 +3,25 @@ package com.cck.wxtest.controller;
 import io.github.elkan1788.mpsdk4j.repo.com.qq.weixin.mp.aes.AesException;
 import io.github.elkan1788.mpsdk4j.repo.com.qq.weixin.mp.aes.SHA1;
 
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cck.wxtest.model.Message;
+import com.cck.wxtest.service.WechatService;
 import com.cck.wxtest.utils.HttpClient;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -33,6 +41,9 @@ public class WechatController {
 	private String url;
 
 	private Cache<String, String> cache = CacheBuilder.newBuilder().expireAfterWrite(7200, TimeUnit.SECONDS).build();
+
+	@Autowired
+	private WechatService wechatService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String valid(String signature, String timestamp, String nonce, String echostr) throws AesException {
@@ -54,6 +65,17 @@ public class WechatController {
 				return map.get("access_token").toString();
 			}
 		});
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String receive(@RequestBody String request) {
+		try {
+			Message message = (Message) JAXBContext.newInstance(Message.class).createUnmarshaller().unmarshal(new StringReader(request));
+			return wechatService.receive(message);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+		return "success";
 	}
 
 }
