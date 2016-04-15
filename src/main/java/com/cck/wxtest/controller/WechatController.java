@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +41,8 @@ public class WechatController {
 	private String appsecret;
 	@Value("${wechat.url}")
 	private String url;
+
+	private Logger logger = LoggerFactory.getLogger(WechatController.class);
 
 	private Cache<String, String> cache = CacheBuilder.newBuilder().expireAfterWrite(7200, TimeUnit.SECONDS).build();
 
@@ -68,7 +72,8 @@ public class WechatController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String receive(@RequestBody String request) {
+	public String receive(String signature, String timestamp, String nonce, @RequestBody String request) {
+		logger.info("into method:receive,params: signature ->{},timestamp ->{},nonce ->{},request ->{}", signature, timestamp, nonce, request);
 		try {
 			Message message = (Message) JAXBContext.newInstance(Message.class).createUnmarshaller().unmarshal(new StringReader(request));
 			return wechatService.receive(message);

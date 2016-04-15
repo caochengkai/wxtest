@@ -1,9 +1,9 @@
-<xml>
-<ToUserName><![CDATA[toUser]]></ToUserName>
-<FromUserName><![CDATA[fromUser]]></FromUserName>
-<CreateTime>1357290913</CreateTime>
+<xml><ToUserName><![CDATA[gh_5012c243f9a2]]></ToUserName>
+<FromUserName><![CDATA[or3FbwFIG6VcZp7sEjr_1LpMU8ro]]></FromUserName>
+<CreateTime>1460710335</CreateTime>
 <MsgType><![CDATA[voice]]></MsgType>
-<MediaId><![CDATA[media_id]]></MediaId>
-<Format><![CDATA[Format]]></Format>
-<MsgId>1234567890123456</MsgId>
+<MediaId><![CDATA[cf4Z6J-OBEZbrtwASIpk3DxHvmPcGuyCvQgctgOwAgK8m4o81AqSFXbNFE_dU1Lo]]></MediaId>
+<Format><![CDATA[amr]]></Format>
+<MsgId>6273703117754204160</MsgId>
+<Recognition><![CDATA[你好！]]></Recognition>
 </xml>
