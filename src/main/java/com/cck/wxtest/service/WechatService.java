@@ -15,15 +15,15 @@ public class WechatService {
 	public String receive(Message message) throws JAXBException {
 		if (message.getMsgType().equals(MessageType.voice)) {
 			if (message.getRecognition().contains("你好")) {
-				parseToTest(message, "你好");
+				parseToText(message, "你好");
 			} else {
-				parseToTest(message, "请再说一遍");
+				parseToText(message, "请再说一遍");
 			}
 		}
 		return convertMessage(message);
 	}
 
-	private void parseToTest(Message message, String content) {
+	private void parseToText(Message message, String content) {
 		message.setMsgType(MessageType.text);
 		message.setContent(content);
 	}
