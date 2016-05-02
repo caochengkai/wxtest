@@ -18,14 +18,6 @@ public class H2Server {
 			System.out.println("Web server running on http://localhost:8082 (only local connections)");
 			System.out.println("TCP server running on tcp://localhost:9092 (only local connections)");
 			System.out.println("Hit Enter to stop H2 database");
-			while (true) {
-				char c = (char) System.in.read();
-				if (c == '\n') {
-					System.out.println("Stop H2 database");
-					stopServer();
-					System.exit(0);
-				}
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
