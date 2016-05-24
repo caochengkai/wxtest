@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication
-@ServletComponentScan
+@SpringBootApplication  
+@ServletComponentScan //scan the servlet or filter or listener for web
 public class SampleController extends SpringBootServletInitializer {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -19,6 +19,7 @@ public class SampleController extends SpringBootServletInitializer {
 		return "Hello World!";
 	}
 
+	//让项目在servlet容器中启动（类似于web.xml文件配置的方式来启动Spring应用上下文）
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(SampleController.class);
