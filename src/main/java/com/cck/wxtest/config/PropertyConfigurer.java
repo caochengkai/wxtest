@@ -1,4 +1,4 @@
-package com.cck.wxtest.property;
+package com.cck.wxtest.config;
 
 import java.io.File;
 
