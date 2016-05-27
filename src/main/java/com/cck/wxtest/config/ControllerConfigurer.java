@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 @ControllerAdvice
-public class ControllerConfig {
+public class ControllerConfigurer {
 
 	@Autowired
 	ResourceUrlProvider resourceUrlProvider;
