@@ -76,7 +76,9 @@ public class WechatController {
 		logger.info("into method:receive,params: signature ->{},timestamp ->{},nonce ->{},request ->{}", signature, timestamp, nonce, request);
 		try {
 			Message message = (Message) JAXBContext.newInstance(Message.class).createUnmarshaller().unmarshal(new StringReader(request));
-			return wechatService.receive(message);
+			String response = wechatService.receive(message);
+			logger.info(response);
+			return response;
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}

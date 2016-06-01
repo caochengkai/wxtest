@@ -20,8 +20,6 @@ public class TopicController {
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView list() {
-		Topic entity = new Topic();
-		topicDao.save(entity);
 		List<Topic> topics = topicDao.findAll();
 		ModelAndView mav = new ModelAndView("/topic/topic_list");
 		mav.addObject("topics", topics);
