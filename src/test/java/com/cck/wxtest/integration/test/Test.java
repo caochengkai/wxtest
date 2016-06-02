@@ -1,4 +1,4 @@
-package com.cck.wxtest.test;
+package com.cck.wxtest.integration.test;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

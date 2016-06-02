@@ -34,11 +34,11 @@ public class WechatService {
 
 	private void handleMessage(Message message, String content) {
 		if (content.contains("图片")) {
-			parseToImage(message, "Dlrgkn7VaEQftTR3X6oEK8ABkz8VOqDgykXrplk0fk4q3QduZqUPL88j4qaH6-kr");
+			parseToImage(message, "LAjxg2OjUorgjl-lOW2-8mQIVgvVHZBnP61qX-G0Ljw");
 		} else if (content.contains("语音")) {
-			parseToVoice(message, "YgC6c_31r7EI3uGaja-kJBeY7XzWC9Hsnmc8exsp3ZumxalJ36G_La8X5Dp5m6Ou");
+			parseToVoice(message, "LAjxg2OjUorgjl-lOW2-8t3CtCsdqtVFEOHVs4BTIu8");
 		} else if (content.contains("视频")) {
-			parseToVideo(message, "jKDrpIwn0Yg9SxCLWUqX2yJpZEAaoWCoWqOXsXm_CZfpS9ptE-UVq_xA2v6eauRR");
+			parseToVideo(message, "LAjxg2OjUorgjl-lOW2-8nGvYvybR6PH1cjv9GL4m38");
 		} else if (content.contains("图文")) {
 			parseToArticle(message);
 		} else if (content.contains("音乐")) {
@@ -77,12 +77,12 @@ public class WechatService {
 		Article article1=new Article();
 		article1.setTitle("观前街");
 		article1.setDescription("观前街位于江苏苏州市区，是成街于清朝时期的百年商业老街，街上老店名店云集，名声远播海内外...");
-		article1.setPicUrl("http://52.11.163.107/resource/ghrupload/hiltonimages/NYCHS_exterior.jpg");
+		article1.setPicUrl("https://mmbiz.qlogo.cn/mmbiz/be1IMFSnNGibNJgZqc5eMjukspxBD3iblOb3MpLC1IK4ZIsxiaiazBSCJ61k1aGEibWfzq8L0PHSYT6Y1qRTACIspBg/0?wx_fmt=jpeg");
 		article1.setUrl("http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5NDM0NTEyMg==&appmsgid=10000052&itemidx=1&sign=90518631fd3e85dd1fde7f77c04e44d5#wechat_redirect");
 		Article article2=new Article();
 		article2.setTitle("平江路");
 		article2.setDescription("平江路位于苏州古城东北，是一条傍河的小路，北接拙政园，南眺双塔，全长1606米，是苏州一条历史攸久的经典水巷。宋元时候苏州又名平江，以此名路...");
-		article2.setPicUrl("http://52.11.163.107/resource/hilton/image/NYCMDHF_Hilton_Manhattan_East_A.jpg");
+		article2.setPicUrl("https://mmbiz.qlogo.cn/mmbiz/be1IMFSnNGibNJgZqc5eMjukspxBD3iblOb3MpLC1IK4ZIsxiaiazBSCJ61k1aGEibWfzq8L0PHSYT6Y1qRTACIspBg/0?wx_fmt=jpeg");
 		article2.setUrl("http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5NDM0NTEyMg==&appmsgid=10000056&itemidx=1&sign=ef18a26ce78c247f3071fb553484d97a#wechat_redirect");
 		message.setArticles(Lists.newArrayList(article1,article2));
 	}
