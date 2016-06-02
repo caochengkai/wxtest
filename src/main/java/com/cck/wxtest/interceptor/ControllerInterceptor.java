@@ -1,4 +1,4 @@
-package com.cck.wxtest.config;
+package com.cck.wxtest.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 @ControllerAdvice
-public class ControllerConfigurer {
+public class ControllerInterceptor {
 
 	@Autowired
 	ResourceUrlProvider resourceUrlProvider;

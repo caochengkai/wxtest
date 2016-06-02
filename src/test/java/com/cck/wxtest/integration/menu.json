@@ -1,27 +1,51 @@
  {
      "button":[
      {	
-          "type":"click",
-          "name":"今日歌曲",
-          "key":"V1001_TODAY_MUSIC"
-      },
-      {
            "name":"菜单",
            "sub_button":[
            {	
                "type":"view",
-               "name":"搜索",
-               "url":"http://www.soso.com/"
+               "name":"主题",
+               "url":"http://115.28.30.4/wxtest/wechat/topic/add"
             },
             {
                "type":"view",
-               "name":"视频",
-               "url":"http://v.qq.com/"
+               "name":"列表",
+               "url":"http://115.28.30.4/wxtest/wechat/topic/list"
+            }]
+      },
+      {	
+          "type":"view",
+          "name":"搜索",
+          "key":"http://www.baidu.com/"
+      },
+      {
+           "name":"功能",
+           "sub_button":[
+           {
+               "type":"click",
+               "name":"图片",
+               "key":"V1001_MUSIC"
+           },
+           {	
+               "type":"click",
+               "name":"语音",
+               "url":"V1001_VIOCE"
             },
             {
                "type":"click",
-               "name":"赞一下我们",
-               "key":"V1001_GOOD"
+               "name":"视频",
+               "key":"V1001_VIDEO"
+            },
+            {
+               "type":"click",
+               "name":"歌曲",
+               "key":"V1001_MUSIC"
+            },
+            {
+               "type":"click",
+               "name":"图文",
+               "key":"V1001_MUSIC"
             }]
        }]
  }

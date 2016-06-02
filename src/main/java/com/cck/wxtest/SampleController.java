@@ -2,8 +2,6 @@ package com.cck.wxtest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,20 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-@EnableTransactionManagement
-@ServletComponentScan
-// scan the servlet or filter or listener for web
-public class SampleController extends SpringBootServletInitializer {
+@EnableTransactionManagement // <tx:annotation-driven transaction-manager="transactionManager"/>
+@ServletComponentScan// scan the servlet or filter or listener for web
+public class SampleController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	String home() {
 		return "Hello World!";
-	}
-
-	// 让项目在servlet容器中启动（类似于web.xml文件配置的方式来启动Spring应用上下文）
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SampleController.class);
 	}
 
 	public static void main(String[] args) throws Exception {
