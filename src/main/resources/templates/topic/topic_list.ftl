@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
-		<link rel="stylesheet" type="text/css" href="${urls.getForLookupPath('/css/weui.css')}">
-		<link rel="stylesheet" type="text/css" href="${urls.getForLookupPath('/css/jquery-weui.css')}">
+		<link rel="stylesheet" type="text/css" href="${basePath+urls.getForLookupPath('/css/weui.css')}">
+		<link rel="stylesheet" type="text/css" href="${basePath+urls.getForLookupPath('/css/jquery-weui.css')}">
 		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="${urls.getForLookupPath('/js/jquery-weui.js')}"></script>
+		<script type="text/javascript" src="${basePath+urls.getForLookupPath('/js/jquery-weui.js')}"></script>
 	</head>
 	
 	<script type="text/javascript" th:inline="javascript">
@@ -85,7 +85,7 @@
 		                     <p class="weui_media_desc" >${topic.content}</p>
 		                 </div>
 		                 <div class="weui_media_hd">
-							<img class="weui_media_appmsg_thumb" src="/img/best-answer-2.jpg" height="60" width="60"/>
+							<img class="weui_media_appmsg_thumb" src="${basePath+'/img/best-answer-2.jpg'}" height="60" width="60"/>
 						</div>
                 	</a> 
                 	<div class="weui_media_box weui_media_text" style="padding-bottom:0;padding-top:0;position:initial">

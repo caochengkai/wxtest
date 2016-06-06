@@ -16,4 +16,5 @@ def wechatController=new WechatController(["token":token,"appId":appId,"encoding
 
 def accessToken=wechatController.getAccessToken();
 
-HttpClient.post(url+"/cgi-bin/menu/create?access_token="+accessToken,new ObjectMapper().readValue(IOUtils.toString(Menu.class.getResourceAsStream("menu.json"), "UTF-8"), Map.class));
+def response=HttpClient.post(url+"/cgi-bin/menu/create?access_token="+accessToken,new ObjectMapper().readValue(IOUtils.toString(Menu.class.getResourceAsStream("menu.json"), "UTF-8"), Map.class));
+print response

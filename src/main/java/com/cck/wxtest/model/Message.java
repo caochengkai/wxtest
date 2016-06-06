@@ -21,6 +21,10 @@ public class Message {
 	private Long createTime;
 	@XmlElement(name = "MsgType")
 	private MessageType msgType;
+	@XmlElement(name = "Event")
+	private Event event;
+	@XmlElement(name = "EventKey")
+	private String eventKey;
 	@XmlElement(name = "Content")
 	private String content;
 	@XmlElement(name = "MsgId")
@@ -158,10 +162,26 @@ public class Message {
 		this.recognition = recognition;
 	}
 
+	public Event getEvent() {
+		return event;
+	}
+
+	public String getEventKey() {
+		return eventKey;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public void setEventKey(String eventKey) {
+		this.eventKey = eventKey;
+	}
+
 	@Override
 	@SuppressWarnings("all")
 	public int hashCode() {
-		return Objects.hashCode(toUserName, fromUserName, createTime, msgType, content, msgId, image, voice, video, music, articleCount, articles, format, recognition);
+		return Objects.hashCode(toUserName, fromUserName, createTime, msgType, event, eventKey, content, msgId, image, voice, video, music, articleCount, articles, format, recognition);
 	}
 
 	@Override
@@ -170,9 +190,10 @@ public class Message {
 		if (object instanceof Message) {
 			Message that = (Message) object;
 			return Objects.equal(this.toUserName, that.toUserName) && Objects.equal(this.fromUserName, that.fromUserName) && Objects.equal(this.createTime, that.createTime)
-					&& Objects.equal(this.msgType, that.msgType) && Objects.equal(this.content, that.content) && Objects.equal(this.msgId, that.msgId) && Objects.equal(this.image, that.image)
-					&& Objects.equal(this.voice, that.voice) && Objects.equal(this.video, that.video) && Objects.equal(this.music, that.music) && Objects.equal(this.articleCount, that.articleCount)
-					&& Objects.equal(this.articles, that.articles) && Objects.equal(this.format, that.format) && Objects.equal(this.recognition, that.recognition);
+					&& Objects.equal(this.msgType, that.msgType) && Objects.equal(this.event, that.event) && Objects.equal(this.eventKey, that.eventKey) && Objects.equal(this.content, that.content)
+					&& Objects.equal(this.msgId, that.msgId) && Objects.equal(this.image, that.image) && Objects.equal(this.voice, that.voice) && Objects.equal(this.video, that.video)
+					&& Objects.equal(this.music, that.music) && Objects.equal(this.articleCount, that.articleCount) && Objects.equal(this.articles, that.articles)
+					&& Objects.equal(this.format, that.format) && Objects.equal(this.recognition, that.recognition);
 		}
 		return false;
 	}
@@ -180,9 +201,9 @@ public class Message {
 	@Override
 	@SuppressWarnings("all")
 	public String toString() {
-		return Objects.toStringHelper(this).add("toUserName", toUserName).add("fromUserName", fromUserName).add("createTime", createTime).add("msgType", msgType).add("content", content)
-				.add("msgId", msgId).add("image", image).add("voice", voice).add("video", video).add("music", music).add("articleCount", articleCount).add("articles", articles).add("format", format)
-				.add("recognition", recognition).toString();
+		return Objects.toStringHelper(this).add("toUserName", toUserName).add("fromUserName", fromUserName).add("createTime", createTime).add("msgType", msgType).add("event", event)
+				.add("eventKey", eventKey).add("content", content).add("msgId", msgId).add("image", image).add("voice", voice).add("video", video).add("music", music)
+				.add("articleCount", articleCount).add("articles", articles).add("format", format).add("recognition", recognition).toString();
 	}
 
 }
