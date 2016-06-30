@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication
+@SpringBootApplication //The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration and @ComponentScan
 @EnableTransactionManagement // <tx:annotation-driven transaction-manager="transactionManager"/>
 @ServletComponentScan// scan the servlet or filter or listener for web
 public class SampleController {
